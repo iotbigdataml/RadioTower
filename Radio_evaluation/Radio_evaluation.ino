@@ -95,18 +95,24 @@ void loop()
             Serial.println(Msg);
 
         }
-//        else if(!strcmp(Msg,"s"))
-//        {
-//          Serial.println("Moving Backward");
-////            mySerial.write("The quick red fox jumped over the lazy brown dog.\n");
-//            radio.write(&Msg, i); 
-//
-//        }
-//        else
-//        {
-//          Serial.print("Input Provided is not part of the commands! Input:");
-//          Serial.println(Msg);        // Debug
-//        }
+           else if(!strcmp(Msg,"n"))
+        {
+          Serial.println("Exit Maintenance mode");
+//           mySerial.write("The quick red fox jumped over the lazy brown dog.\n");
+            radio.openWritingPipe(address1);       // Open the radio pipe using your address (read about pipes and channels)
+            radio.setPALevel(RF24_PA_MIN);        // Set the power level. Since the bots and the radio base station are close I use min power
+            radio.stopListening();                // Now we listen for messages...
+            radio.write(&Msg, i);
+            Serial.println(Msg);
+            radio.openWritingPipe(address2);       // Open the radio pipe using your address (read about pipes and channels)
+            radio.setPALevel(RF24_PA_MIN);        // Set the power level. Since the bots and the radio base station are close I use min power
+            radio.stopListening();                // Now we listen for messages...
+            radio.write(&Msg, i);
+            Serial.println(Msg);
+
+        }
+
+
         memset(Msg,0,MsgLn);
         i = 0;
      }

@@ -77,24 +77,40 @@ class Bot2(Resource):
         ser.flush()
         return "Bot 2: Command Issued"
 
-class Maintenance(Resource):
+class EnterMaintenance(Resource):
     def get(self):
         message='m+'
         b = str.encode(message)						# Puts the message into bytes
         ser.write(b)								# Writes the bytes to the specified port 
         ser.flush()		
-        return "Maintenance: Command Issued"
+        return "Enter Maintenance: Command Issued"
     
     def post(self):
         message='m+'
         b = str.encode(message)						# Puts the message into bytes
         ser.write(b)								# Writes the bytes to the specified port 
         ser.flush()	
-        return "Maintenance: Command Issued"
+        return "Enter Maintenance: Command Issued"
+
+class ExitMaintenance(Resource):
+    def get(self):
+        message='n+'
+        b = str.encode(message)						# Puts the message into bytes
+        ser.write(b)								# Writes the bytes to the specified port 
+        ser.flush()		
+        return "Exit Maintenance: Command Issued"
+    
+    def post(self):
+        message='n+'
+        b = str.encode(message)						# Puts the message into bytes
+        ser.write(b)								# Writes the bytes to the specified port 
+        ser.flush()	
+        return "Exit Maintenance: Command Issued"
 
 api.add_resource(Bot1, '/bot1') # Route_1
 api.add_resource(Bot2, '/bot2') # Route_2
-api.add_resource(Maintenance, '/maintenance') # Route_3
+api.add_resource(EnterMaintenance, '/entermaintenance') # Route_3
+api.add_resource(ExitMaintenance, '/exitmaintenance') # Route_4
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, threaded=True)
