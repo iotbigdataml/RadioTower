@@ -1,0 +1,68 @@
+
+==================================================
+PL2303 Windows 10 DCHU Driver Setup Installer, Prolific Edition
+Setup Installer Revision Note History
+==================================================
+
+System Requirement:
+  . USB 1.1/2.0/3.0/3.1 Host Controller
+  . Device using PL2303HXD/EA/RA/SA/TA/TB version chips
+  . Supports the following Windows OS Family (32 and 64 bit):
+	- Windows 10 RS3 version 1709 (build 16299)
+	- Windows 10 RS4 version 1803 (build 17134)
+
+Supported device ID and product strings:
+  . VID_067B&PID_2303 for "Prolific USB-to-Serial Comm Port" (PL2303 series)
+  . VID_067B&PID_2304 for "Prolific USB-to-GPIO/PWM Port" (PL2303TB chip)
+
+
+Driver Versions:
+-------------------
+	- WDF WHQL Driver: v3.8.18.0 (10/17/2017) 
+
+Release Notes:
+---------------
+PL2303 Driver Installer v1.19.2
+   Installer & Build date: 1.19.2 (2018-05-03)
+	GUID:ECC3713C-08A4-40E3-95F1-7D0704F1CE5E
+
+	Installer Revision:
+	---------------------------
+	- This Driver Setup installer version 1.19.2 is for Windows 10 RS3 and RS4 ONLY.
+	- Driver installed is DCHU compliant (no DLL)
+ 
+   =====================================================================
+   Windows WDF WHQL Driver v3.8.18.0 (10/17/2017):
+   =====================================================================
+	Driver Revision Change:
+	--------------------------------
+                  . Driver Certified for Windows 10RS4  (version 1803 build 17134) 
+  	     - ser2pl.cat file (05/03/2018)
+                  . Driver Certified for Windows 10RS3  (version 1709 build 16299)
+	. Fixed customer low baudrate timing issue
+	. Remove DLL for Advanced Port Settings in Driver Properties (Device Manager) 
+		- DCHU requirement (no DLL included in driver)
+
+   Language Support: 
+	- English (default)
+	- Chinese (Traditional) 
+	- Chinese (Simplified)
+	- Japanese
+
+
+===========================
+How to Install Driver
+===========================
+1. Unplug any PL2303 USB Device first.
+2. Run Driver Installer EXE program to install. Wait to finish. 
+3. Plug PL2303 USB Device and go to Device Manager to check COM Port number. 
+4. If PL2303 is embedded, you might need to restart Windows or rescan hardware in Device Manager.
+5. Refer to PL2303 Windows Driver User's Manual. 
+
+NOTE: For silent install, include the syntax "/s" at the end of the EXE installer program. 
+For example: "PL2303_Prolific_DriverInstaller.exe /s"
+
+
+========================================
+Prolific Technology Inc.
+http://www.prolific.com.tw
