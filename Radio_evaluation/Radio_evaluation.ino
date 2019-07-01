@@ -48,6 +48,17 @@ void setup()
 
 void loop()                            
 {
+  radio.openReadingPipe(1,address1);
+  radio.startListening();
+  delay(100);
+          if (radio.available())              // If we have messages, we print them out - otherwise we do nothing but listen.
+           {
+            char text[32] = "";
+            radio.read(&text, sizeof(text));
+            Serial.println(text);
+            mySerial.write(text,sizeof(text));
+           }
+  
 
   while(mySerial.available())
   {
