@@ -10,6 +10,8 @@ import time
 import serial 
 import requests,json
 
+URI = 'http://9ee6a80e.ngrok.io/api/trips/update/bot/arrival'
+
 # Make sure the device/comm port was supplied on the command line. To get a list of valie devices please see
 # serialports.py (lists the available ports).
 
@@ -52,26 +54,26 @@ try:
 		if ser.in_waiting > 0:				# Check to see if anything is in the buffer					
 			line =ser.readline()	
 			print(line)
-			if (line == 'receiving1'):
-			
-				j = {'station':'RECV','bot':'1'}
-				r =requests.post('http://fae1f02e.ngrok.io/api/trips/update/arrival',data=j)
-			
-			elif (line == 'receiving2'):
-			
-				j = {'station':'RECV','bot':'2'}
-				r =requests.post('http://fae1f02e.ngrok.io/api/trips/update/arrival',data=j)
-			
-			elif (line == 'shipping1'):
-			
-				j = {'station':'SHIP','bot':'1'}
-				r =requests.post('http://fae1f02e.ngrok.io/api/trips/update/arrival',data=j)
-			
-			elif (line == 'shipping2'):
-			
-				j = {'station':'SHIP','bot':'2'}
-				r =requests.post('http://fae1f02e.ngrok.io/api/trips/update/arrival',data=j)
-			
+			#print(str(lhttp://fae1f02e.ngrok.ioine[0:10]) == "receiving1")
+			#print(len(line))
+			#s1="receiving1"
+			#print(len(s1))
+			if (line[0:10] == "receiving1"):
+				j = {'station':'RECV','bot':'11'}
+				r =requests.post(URI,data=j)
+				#print("check")
+			elif (line[0:10] == "receiving2"):
+				j = {'station':'RECV','bot':'12'}
+				r =requests.post(URI,data=j)
+				#print("check")
+			elif (line[0:9] == 'shipping1'):
+				j = {'station':'SHIP','bot':'11'}
+				r =requests.post(URI,data=j)
+				#print("check")
+			elif (line[0:9] == 'shipping2'):
+				j = {'station':'SHIP','bot':'12'}
+				r =requests.post(URI,data=j)
+				#print("check")
 except KeyboardInterrupt:
 	print('interrupted')	
 
