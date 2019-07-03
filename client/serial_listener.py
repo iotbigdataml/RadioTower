@@ -8,6 +8,7 @@
 import sys
 import time
 import serial 
+import requests,json
 
 # Make sure the device/comm port was supplied on the command line. To get a list of valie devices please see
 # serialports.py (lists the available ports).
@@ -51,6 +52,26 @@ try:
 		if ser.in_waiting > 0:				# Check to see if anything is in the buffer					
 			line =ser.readline()	
 			print(line)
+			if (line == 'receiving1'):
+			
+				j = {'station':'RECV','bot':'1'}
+				r =requests.post('http://fae1f02e.ngrok.io/api/trips/update/arrival',data=j)
+			
+			elif (line == 'receiving2'):
+			
+				j = {'station':'RECV','bot':'2'}
+				r =requests.post('http://fae1f02e.ngrok.io/api/trips/update/arrival',data=j)
+			
+			elif (line == 'shipping1'):
+			
+				j = {'station':'SHIP','bot':'1'}
+				r =requests.post('http://fae1f02e.ngrok.io/api/trips/update/arrival',data=j)
+			
+			elif (line == 'shipping2'):
+			
+				j = {'station':'SHIP','bot':'2'}
+				r =requests.post('http://fae1f02e.ngrok.io/api/trips/update/arrival',data=j)
+			
 except KeyboardInterrupt:
 	print('interrupted')	
 
