@@ -10,8 +10,7 @@ import time
 import serial 
 import requests,json
 
-URI = 'http://34.239.133.107:3000/api/trips/update/bot/arrival'
-
+URI = 'http://ec2-54-198-142-139.compute-1.amazonaws.com:3000/api/trips/update/bot/arrival'
 # Make sure the device/comm port was supplied on the command line. To get a list of valie devices please see
 # serialports.py (lists the available ports).
 
@@ -78,26 +77,26 @@ try:
 				j = {'station':'SHIP','bot':'12'}
 				r =requests.post(URI,data=j)
 				#print("check")
-				j = {'station':'RECV','bot':'11'}
-				r =requests.post(URI,data=j)
+				jj = {'station':'RECV','bot':'11'}
+				rr =requests.post(URI,data=jj)
 			elif (line[0:19] == 'shipping1receiving2'):
 				j = {'station':'SHIP','bot':'11'}
 				r =requests.post(URI,data=j)
 				#print("check")
-				j = {'station':'RECV','bot':'12'}
-				r =requests.post(URI,data=j)
+				jj = {'station':'RECV','bot':'12'}
+				rr =requests.post(URI,data=jj)
 			elif (line[0:19] == 'receiving1shipping2'):
 				j = {'station':'SHIP','bot':'12'}
 				r =requests.post(URI,data=j)
 				#print("check")
-				j = {'station':'RECV','bot':'11'}
-				r =requests.post(URI,data=j)
+				jj = {'station':'RECV','bot':'11'}
+				rr =requests.post(URI,data=jj)
 			elif (line[0:19] == 'receiving2shipping1'):
 				j = {'station':'SHIP','bot':'11'}
 				r =requests.post(URI,data=j)
 				#print("check")
-				j = {'station':'RECV','bot':'12'}
-				r =requests.post(URI,data=j)
+				jj = {'station':'RECV','bot':'12'}
+				rr =requests.post(URI,data=jj)
 
 
 except KeyboardInterrupt:
